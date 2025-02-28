@@ -69,6 +69,41 @@ game:GetService("Players").LocalPlayer.Idled:Connect(function()
     VirtualUser:CaptureController()
     VirtualUser:ClickButton2(Vector2.new())
 end)
+-- سكربت BATX3nzi مع AFK قوي، طيران، عدادات، وإنفو
+
+-- وظيفة منع الـ AFK
+local VirtualUser = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:Connect(function()
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new())
+end)
+
+-- وظيفة الطيران
+local UIS = game:GetService("UserInputService")
+local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local humanoid = char:FindFirstChildOfClass("Humanoid")
+local flying = false
+
+function toggleFly()
+    if flying then
+        flying = false
+        humanoid.PlatformStand = false
+    else
+        flying = true
+        humanoid.PlatformStand = true
+        while flying do
+            char.HumanoidRootPart.Velocity = Vector3.new(0, 50, 0)
+            wait(0.1)
+        end
+    end
+end
+
+UIS.InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.F then
+        toggleFly()
+    end
+end)
 
 -- وظيفة عرض العداد والإنفو
 local ScreenGui = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
@@ -76,10 +111,9 @@ local InfoLabel = Instance.new("TextLabel", ScreenGui)
 
 InfoLabel.Size = UDim2.new(0, 200, 0, 50)
 InfoLabel.Position = UDim2.new(0.5, -100, 0, 10)
-InfoLabel.Text = "Roberto" - AFK System Active"
+InfoLabel.Text = "ROBERtoxCatay - AFK System Active"
 InfoLabel.TextColor3 = Color3.new(1, 1, 1)
 InfoLabel.BackgroundColor3 = Color3.new(0, 0, 0)
-
 
  -- إظهار الإشعار بعد تشغيل السكربت
     showNotification()
