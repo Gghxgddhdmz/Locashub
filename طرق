@@ -1,0 +1,72 @@
+
+
+-- دالة لإظهار الإشعار مثل roberto
+local function showNotification()
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "roberto"; -- عنوان الإشعار
+        Text = "تم فتح طرق روبييرتو!"; -- نص الإشعار
+        Duration = 5; -- مدة الإشعار (بالثواني)
+    })
+end
+if game.Players.LocalPlayer.Character.Humanoid.Health == 100 then
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
+else
+print("اقوى طرق")
+end
+local function extremeBoost()
+    -- تعطيل الظلال والإضاءة الثقيلة
+    settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
+    game:GetService("Lighting").GlobalShadows = false
+    game:GetService("Lighting").FogEnd = 9e9
+    game:GetService("Lighting").Brightness = 3
+
+    -- تعطيل الجسيمات والتأثيرات البصرية
+    for _, v in pairs(game:GetDescendants()) do
+        if v:IsA("ParticleEmitter") or v:IsA("Trail") or v:IsA("Beam") then
+            v.Enabled = false
+        elseif v:IsA("Explosion") then
+            v.BlastPressure = 0
+            v.BlastRadius = 0
+        end
+    end
+
+    -- تعطيل الأضواء الديناميكية
+    for _, v in pairs(workspace:GetDescendants()) do
+        if v:IsA("PointLight") or v:IsA("SpotLight") or v:IsA("SurfaceLight") then
+            v.Enabled = false
+        end
+    end
+
+    -- إزالة القوام غير المهمة
+    for _, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if v:IsA("Decal") or v:IsA("Texture") then
+            v:Destroy()
+        end
+    end
+
+    -- تعطيل فيزياء المياه الثقيلة
+    game:GetService("Workspace").Terrain.WaterWaveSize = 0
+    game:GetService("Workspace").Terrain.WaterWaveSpeed = 0
+    game:GetService("Workspace").Terrain.WaterReflectance = 0
+    game:GetService("Workspace").Terrain.WaterTransparency = 1
+
+    -- تعطيل الحركات غير الضرورية في الشخصيات
+    for _, v in pairs(game:GetService("Players"):GetPlayers()) do
+        if v.Character then
+            for _, anim in pairs(v.Character:GetDescendants()) do
+                if anim:IsA("Animation") then
+                    anim:Destroy()
+                end
+            end
+        end
+    end
+
+    -- تعيين الحد الأقصى لمعدل الإطارات
+    setfpscap(70)
+
+    -- إظهار الإشعار بعد تشغيل السكربت
+    showNotification()
+end
+
+-- تشغيل السكربت
+extremeBoost()
