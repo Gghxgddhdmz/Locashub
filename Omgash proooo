@@ -64,7 +64,24 @@ local function extremeBoost()
     -- تعيين الحد الأقصى لمعدل الإطارات
     setfpscap(70)
 
-    -- إظهار الإشعار بعد تشغيل السكربت
+local VirtualUser = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:Connect(function()
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new())
+end)
+
+-- وظيفة عرض العداد والإنفو
+local ScreenGui = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
+local InfoLabel = Instance.new("TextLabel", ScreenGui)
+
+InfoLabel.Size = UDim2.new(0, 200, 0, 50)
+InfoLabel.Position = UDim2.new(0.5, -100, 0, 10)
+InfoLabel.Text = "Roberto" - AFK System Active"
+InfoLabel.TextColor3 = Color3.new(1, 1, 1)
+InfoLabel.BackgroundColor3 = Color3.new(0, 0, 0)
+
+
+ -- إظهار الإشعار بعد تشغيل السكربت
     showNotification()
 end
 
