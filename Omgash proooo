@@ -8,6 +8,15 @@ local function showNotification()
         Duration = 5; -- مدة الإشعار (بالثواني)
     })
 end
+local ScreenGui = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
+local InfoLabel = Instance.new("TextLabel", ScreenGui)
+
+InfoLabel.Size = UDim2.new(0, 200, 0, 50)
+InfoLabel.Position = UDim2.new(0.5, -100, 0, 10)
+InfoLabel.Text = "ROBERtoxCatay - AFK System Active"
+InfoLabel.TextColor3 = Color3.new(1, 1, 1)
+InfoLabel.BackgroundColor3 = Color3.new(0, 0, 0)
+
 if game.Players.LocalPlayer.Character.Humanoid.Health == 100 then
 game.Players.LocalPlayer.Character.Humanoid.Health = 0
 else
@@ -70,17 +79,7 @@ game:GetService("Players").LocalPlayer.Idled:Connect(function()
     VirtualUser:ClickButton2(Vector2.new())
 end)
 
-local ScreenGui = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
-local InfoLabel = Instance.new("TextLabel", ScreenGui)
-
-InfoLabel.Size = UDim2.new(0, 200, 0, 50)
-InfoLabel.Position = UDim2.new(0.5, -100, 0, 10)
-InfoLabel.Text = "ROBERtoxCatay - AFK System Active"
-InfoLabel.TextColor3 = Color3.new(1, 1, 1)
-InfoLabel.BackgroundColor3 = Color3.new(0, 0, 0)
-
- -- إظهار الإشعار بعد تشغيل السكربت
-    showNotification()
+showNotification()
 end
 
 -- تشغيل السكربت
